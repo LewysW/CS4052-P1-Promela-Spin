@@ -18,7 +18,6 @@ proctype p1() {
     x = 2;
     s1 = false;
   }
-  ::true
   od;
 }
 
@@ -30,7 +29,6 @@ proctype p2() {
     x = 3;
     s2 = false;
   }
-  ::true
   od;
 }
 
@@ -42,6 +40,5 @@ proctype p3() {
     x = 1;
     s3 = false;
   }
-  ::true
   od;
 }
