@@ -20,5 +20,5 @@ active [N]proctype p() {
                         ::process = (process % N) + 1;
                         fi;
   :: else -> skip;
-  od
+  od;
 }
