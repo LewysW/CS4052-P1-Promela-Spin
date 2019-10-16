@@ -40,12 +40,11 @@ active proctype p3() {
 
 never {
   do
-  :: s1 && s2 -> break;
-  :: s1 && s3 -> break;
-  :: s2 && s3 -> break;
-  :: x == 1 && s2 -> break;
-  :: x == 3 && s1 -> break;
-  :: x == 2 && s3 -> break;
-  ::true;
+  :: assert(!(s1 && s2));
+  :: assert(!(s1 && s3));
+  :: assert(!(s2 && s3));
+  :: assert(!(x == 1 && s2));
+  :: assert(!(x == 3 && s1));
+  :: assert(!(x == 2 && s3));
   od;
 }
