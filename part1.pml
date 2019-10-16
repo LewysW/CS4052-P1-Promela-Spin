@@ -46,5 +46,7 @@ never {
   :: assert(!(x == 1 && s2));
   :: assert(!(x == 3 && s1));
   :: assert(!(x == 2 && s3));
+  :: assert(x >= 1);
+  :: assert(x <= 3);
   od;
 }

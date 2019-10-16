@@ -33,8 +33,8 @@ ltl b {!([](x % 2 == 1))}
 ltl c {!([]<>(x % 2 == 1))}
 
 //It is always true that y <= x
-ltl d {[] y <= x}
+ltl d {[](y <= x)}
 
 //It is always true that when y != x it follows that at some point y = x
-ltl e {[](y != x -> (<> y == x))}
+ltl e {[]((y != x) -> <>(y == x))}
 
