@@ -1,0 +1,44 @@
+# 1 "part2.pml"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 31 "<command-line>"
+# 1 "/usr/include/stdc-predef.h" 1 3 4
+# 32 "<command-line>" 2
+# 1 "part2.pml"
+
+
+int process = 0;
+bool print[4];
+# 13 "part2.pml"
+active [4]proctype p() {
+  int id = _pid;
+  do
+  :: process == id -> print[id] = true;
+                        printf("This is print: %d\n", id);
+                        print[id] = false;
+                        if
+                        ::process == (4 - 1)
+                          -> process = 0;
+                        ::process >= 0 && process < (4 - 1)
+                          -> process = (process % 4) + 1;
+                        fi;
+  :: else -> skip;
+  od;
+}
+
+never {
+  do
+  :: assert(process >= -1);
+  :: assert(process < 4);
+  :: atomic {
+      int isTrue = 0;
+      int i;
+      for (i : 0 .. (4 - 1)) {
+      if
+      :: print[i] -> isTrue++;
+      fi;
+      }
+      assert(isTrue == 0 || isTrue == 1);
+    }
+  od;
+}
