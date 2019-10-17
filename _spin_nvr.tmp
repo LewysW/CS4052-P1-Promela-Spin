@@ -16,15 +16,21 @@ accept_S4:
 	:: ((((x%2)==1))) -> goto accept_S4
 	od;
 }
-never c {    /* !(! ([] (<> (((x%2)==1))))) */
+never c {    /* !(! (<> ([] (<> (((x%2)==1)))))) */
 T0_init:
 	do
-	:: ((((x%2)==1))) -> goto accept_S9
+	:: ((((x%2)==1))) -> goto accept_S3
+	:: (1) -> goto T0_S3
 	:: (1) -> goto T0_init
 	od;
-accept_S9:
+accept_S3:
 	do
-	:: (1) -> goto T0_init
+	:: (1) -> goto T0_S3
+	od;
+T0_S3:
+	do
+	:: ((((x%2)==1))) -> goto accept_S3
+	:: (1) -> goto T0_S3
 	od;
 }
 never d {    /* !([] ((y<=x))) */
