@@ -21,7 +21,7 @@ active [N]proctype p() {
 
 never {
   do
-  :: assert(process >= -1);
+  :: assert(process >= 0);
   :: assert(process < N);
   :: atomic {
       int isTrue = 0;
