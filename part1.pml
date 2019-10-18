@@ -1,9 +1,13 @@
+//Boolean state variables
 bool s1 = false;
 bool s2 = false;
 bool s3 = false;
 
+//Current process to run
 byte x = 1;
 
+//Each process Pi running their critical section
+//when x = i and all other variables are false
 active proctype p1() {
   do
   ::atomic {
@@ -38,6 +42,8 @@ active proctype p3() {
   od;
 }
 
+//Asserts that ensure that x is in the correct range,
+//and no invalid combination of states can be true together
 never {
   do
   :: assert(!(s1 && s2));
